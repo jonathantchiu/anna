@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anna Chiu Photography</title>
+<meta name="description" content="Photography portfolio of Anna Chiu: city streets, night light, and nature.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #111111;
+    --muted: #6b6b6b;
+    --line: #e4e4e4;
+    --gutter: clamp(16px, 3vw, 56px);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { opacity: .55; }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 28px var(--gutter);
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(6px);
+  }
+  .logo {
+    font-size: clamp(24px, 3vw, 38px);
+    font-weight: 400;
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+  }
+  nav { display: flex; gap: 22px; font-size: 14px; }
+
+  /* Staggered gallery */
+  .gallery { padding: 40px var(--gutter) 80px; }
+  .row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--gutter);
+    align-items: start;
+    margin-bottom: clamp(60px, 9vw, 160px);
+  }
+  .row figure { grid-column: var(--c); margin-top: var(--y, 0); cursor: zoom-in; }
+  .row img {
+    display: block; width: 100%; height: auto;
+    opacity: 0; transform: translateY(24px);
+    transition: opacity .9s ease, transform .9s ease;
+  }
+  .row img.in { opacity: 1; transform: none; }
+
+  /* About */
+  section.about, section.contact {
+    padding: 100px var(--gutter);
+    border-top: 1px solid var(--line);
+  }
+  .about { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); }
+  .about img { grid-column: 2 / 6; width: 100%; height: auto; display: block; }
+  .about .text { grid-column: 7 / 12; align-self: center; }
+  h2 {
+    font-size: 13px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: .08em;
+    margin-bottom: 24px;
+  }
+  .about p { font-size: clamp(18px, 1.6vw, 24px); line-height: 1.4; margin-bottom: 1em; max-width: 34ch; }
+  .about p.small { font-size: 15px; color: var(--muted); }
+
+  /* Contact */
+  .contact { text-align: left; }
+  .contact .big {
+    display: block;
+    font-size: clamp(28px, 5.5vw, 84px);
+    letter-spacing: -.02em;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+  }
+  .contact-list { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 16px 64px; font-size: 16px; }
+  .contact-list span { display: block; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+
+  footer { padding: 24px var(--gutter); font-size: 12px; color: var(--muted); }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 50;
+    background: rgba(255,255,255,.97);
+    display: none; align-items: center; justify-content: center;
+    cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 92vw; max-height: 88vh; object-fit: contain; }
+  .lightbox button {
+    position: absolute; background: none; border: 0; font: inherit; font-size: 14px;
+    cursor: pointer; padding: 16px; color: var(--fg);
+  }
+  .lb-close { top: 12px; right: 12px; }
+  .lb-prev { left: 4px; top: 50%; transform: translateY(-50%); }
+  .lb-next { right: 4px; top: 50%; transform: translateY(-50%); }
+
+  /* Phone: single column, slight alternating indent */
+  @media (max-width: 720px) {
+    header { padding: 18px 16px; }
+    nav { gap: 14px; font-size: 13px; }
+    .gallery { padding: 16px 16px 40px; }
+    .row { display: block; margin-bottom: 0; }
+    .row figure { margin: 0 0 40px; }
+    .row figure:nth-child(2) { margin-left: 18%; }
+    .row figure.narrow { width: 82%; }
+    section.about, section.contact { padding: 64px 16px; }
+    .about { display: block; }
+    .about img { margin-bottom: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#" class="logo">Anna Chiu</a>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="https://instagram.com/anna_chphotos" target="_blank" rel="noopener">Instagram</a>
+  </nav>
+</header>
+
+<main class="gallery" id="work">
+  <div class="row">
+    <figure style="--c: 2 / 6"><img src="images/photo-08.jpg" width="665" height="1182" alt="City lights reflected on night water"></figure>
+    <figure style="--c: 8 / 13; --y: 22vw"><img src="images/photo-09.jpg" width="1600" height="2000" alt="Street with light trails beside brick buildings"></figure>
+  </div>
+  <div class="row">
+    <figure style="--c: 1 / 8"><img src="images/photo-06.jpg" width="1086" height="724" alt="Pink flowers in motion blur"></figure>
+    <figure style="--c: 9 / 12; --y: 14vw" class="narrow"><img src="images/photo-01.jpg" width="665" height="1182" alt="Bridge tower lit up at night above traffic"></figure>
+  </div>
+  <div class="row">
+    <figure style="--c: 2 / 7"><img src="images/photo-03.jpg" width="1600" height="2000" alt="Crowded Times Square street under neon signs"></figure>
+    <figure style="--c: 8 / 13; --y: 28vw"><img src="images/photo-10.jpg" width="1182" height="665" alt="Pink sunset between dark buildings"></figure>
+  </div>
+  <div class="row">
+    <figure style="--c: 1 / 6; --y: 4vw"><img src="images/photo-05.jpg" width="1600" height="2000" alt="Red flower backlit by the sun"></figure>
+    <figure style="--c: 8 / 11; --y: 18vw" class="narrow"><img src="images/photo-14.jpg" width="665" height="1182" alt="Tall building glowing at golden hour"></figure>
+  </div>
+  <div class="row">
+    <figure style="--c: 2 / 9"><img src="images/photo-13.jpg" width="1086" height="724" alt="Candles and flowers in soft blur"></figure>
+    <figure style="--c: 10 / 13; --y: 20vw" class="narrow"><img src="images/photo-11.jpg" width="665" height="1182" alt="Paramount theatre sign on a dark city street"></figure>
+  </div>
+  <div class="row">
+    <figure style="--c: 3 / 8"><img src="images/photo-04.jpg" width="1600" height="2000" alt="Black-eyed Susans in a city garden"></figure>
+    <figure style="--c: 8 / 13; --y: 24vw"><img src="images/photo-07.jpg" width="1182" height="665" alt="Sun bursting through trees beside a house"></figure>
+  </div>
+  <div class="row">
+    <figure style="--c: 2 / 5" class="narrow"><img src="images/photo-12.jpg" width="665" height="1182" alt="Duck on dark water under bare branches"></figure>
+    <figure style="--c: 8 / 11; --y: 16vw" class="narrow"><img src="images/photo-02.jpg" width="380" height="360" alt="White curly dog looking at the camera"></figure>
+  </div>
+</main>
+
+<section class="about" id="about">
+  <img src="images/anna.jpg" width="1200" height="1200" alt="Portrait of Anna Chiu" loading="lazy">
+  <div class="text">
+    <h2>About</h2>
+    <p>Anna Chiu is a photographer drawn to city streets after dark, golden-hour light, and flowers up close.</p>
+    <p class="small">She shoots on a Sony a6400 and edits in Lightroom. Available for portraits, events, and small-business shoots.</p>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Contact</h2>
+  <a class="big" href="mailto:anna.sc.chiu@gmail.com">anna.sc.chiu@gmail.com</a>
+  <div class="contact-list">
+    <a href="tel:+14258300262"><span>Phone</span>(425) 830-0262</a>
+    <a href="https://instagram.com/anna_chphotos" target="_blank" rel="noopener"><span>Instagram</span>@anna_chphotos</a>
+  </div>
+</section>
+
+<footer>© <span id="yr"></span> Anna Chiu. All photographs by Anna Chiu.</footer>
+
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-prev" aria-label="Previous photo">←</button>
+  <img alt="">
+  <button class="lb-next" aria-label="Next photo">→</button>
+  <button class="lb-close" aria-label="Close">Close</button>
+</div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  const imgs = [...document.querySelectorAll('.row img')];
+
+  // Fade photos in as they scroll into view
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    imgs.forEach(img => io.observe(img));
+  } else {
+    imgs.forEach(img => img.classList.add('in'));
+  }
+
+  // Lightbox
+  const lb = document.querySelector('.lightbox');
+  const lbImg = lb.querySelector('img');
+  let idx = 0;
+  const show = i => {
+    idx = (i + imgs.length) % imgs.length;
+    lbImg.src = imgs[idx].src;
+    lbImg.alt = imgs[idx].alt;
+  };
+  imgs.forEach((img, i) => img.parentElement.addEventListener('click', () => {
+    show(i); lb.classList.add('open'); document.body.style.overflow = 'hidden';
+  }));
+  const close = () => { lb.classList.remove('open'); document.body.style.overflow = ''; };
+  lb.addEventListener('click', e => { if (e.target === lb || e.target === lbImg) close(); });
+  lb.querySelector('.lb-close').onclick = close;
+  lb.querySelector('.lb-prev').onclick = e => { e.stopPropagation(); show(idx - 1); };
+  lb.querySelector('.lb-next').onclick = e => { e.stopPropagation(); show(idx + 1); };
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(idx - 1);
+    if (e.key === 'ArrowRight') show(idx + 1);
+  });
+</script>
+</body>
+</html>
